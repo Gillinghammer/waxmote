@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    link(rel='stylesheet', href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css")
     link(rel='stylesheet', href='/style.css')
     link(rel='stylesheet', href='/Swiper/dist/css/swiper.min.css')
     link(rel='stylesheet', href='/animate.css/animate.min.css')
@@ -8,8 +9,8 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Learning WebSockets with Socket.io
   body
-    #wrapper
-      #overlay
+    #wrapper.flex-container
+      #overlay.flex-item
         #suit.hide
           .swiper-container
             .swiper-wrapper
@@ -50,7 +51,7 @@ html
       $("#suit").removeClass("hide")
       $("#resume").removeClass("hide")
       $("#suit").addClass("animated bounceInUp")
-      
+
       var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',

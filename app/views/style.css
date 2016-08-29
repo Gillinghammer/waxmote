@@ -6,6 +6,57 @@ html {
   background-size: cover;
 }
 
+.flex-container {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  -webkit-flex-direction: column; /* Safari */
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap; /* Safari */
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start; /* Safari */
+  justify-content: flex-start;
+  -webkit-align-items: stretch; /* Safari */
+  align-items: stretch;
+  position: relative;
+}
+
+.flex-item {
+  position: absolute;
+  background-color: white;
+  -webkit-align-self: stretch; /* Safari */
+  align-self: stretch;
+  flex: 1;
+  width: 100%;
+}
+
+#suit {
+  flex: 1;
+  height: 100%;
+}
+
+#resume {
+  flex: 1;
+  -webkit-align-self: flex-end; /* Safari */
+  align-self: flex-end;
+  background-color: #007aff;
+  width: 100%;
+  padding: 20px 0px;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  bottom: 0;
+  cursor: pointer;
+}
+
+#resume:active {
+  background-color: #005ABA;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .hide {
   display: none;
 }
