@@ -41,7 +41,7 @@ html
   script(src='/Swiper/dist/js/swiper.jquery.min.js')
   script(src='/socket.io/socket.io.js')
   script.
-    var socket = io.connect('http://waxmote.herokuapp.com')
+    var socket = io()
     
     socket.on('connect', function() {
       var id = socket.id
