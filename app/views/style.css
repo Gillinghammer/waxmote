@@ -31,7 +31,65 @@ html {
 
 #suit {
   flex: 1;
-  height: 100%;
+}
+
+#promo {
+  flex: 1;
+}
+
+#promo-code h6 {
+  color: #666666;
+  text-align: center;
+  font-size: 2em;
+  margin: 0;
+  font-weight: lighter;
+  padding: 20px 0;
+}
+
+#promo-code h5 {
+  color: rgb(240,198,83);
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+  padding: 20px 0;
+  background-color: #e9e9e9;
+}
+
+#promo span {
+  color: black;
+  font-weight: bold;
+}
+
+#join p {
+  text-align: center;
+  font-size: 1em;
+  color: #666666;
+  padding: 20px 60px;
+  font-size: 1.75em;
+  line-height: 1.25em;
+  font-weight: lighter;
+}
+
+#join input {
+  border: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.5em;
+  color: #999999;
+  margin: 0;
+}
+
+#join button {
+  display: block;
+  width: 100%;
+  height: 70px;
+  font-size: 2em;
+  background-color: rgb(240,198,83);
+  color: white;
+  border: 0;
+  cursor: pointer;
 }
 
 #resume {
