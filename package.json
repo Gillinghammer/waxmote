@@ -1,0 +1,19 @@
+{
+  "name": "socketio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gillinghammer/waxmote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gillinghammer/waxmote/issues"
+  },
+  "homepage": "https://github.com/Gillinghammer/waxmote#readme"
+}
