@@ -1,0 +1,96 @@
+html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Slabo 27px', serif;
+        background: url("https://media.giphy.com/media/Ph0oIVQeuvh0k/giphy.gif") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+#wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+div#suit {
+  background-color: white;
+}
+div#promo {
+  background-color: white;
+  color: rgb(240,198,83);
+  text-align: center;
+  height: 500px;
+  font-size: 3em;
+}
+
+div#promo p {
+  padding: 20px 20px 0 20px;
+  margin: 0;
+}
+
+div#promo span {
+  color: black;
+  font-weight: bold;
+}
+
+div#join {
+  font-size: 0.5em;
+  color: #999999;
+}
+
+div#join input {
+      border: none;
+      font-size: 0.35em;
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 50px 40px;
+      font-size: 1em;
+}
+
+div#join button {
+  z-index: 99;
+  position:absolute;
+  bottom:30px;
+  height:90px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: rgb(240,198,83);
+  border: none;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+div#resume {
+  z-index: 99;
+  position:absolute;
+  bottom:0;
+  height:90px;
+  width: 100%;
+  text-align:center;
+  background-color: #007aff;
+  cursor: pointer;
+}
+
+div#resume p {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  padding-top: 25px;
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+img {
+  display: block;
+  height: 100%;
+}

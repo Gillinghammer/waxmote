@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/style.css')
+    link(rel='stylesheet', href="/Swiper/dist/css/swiper.min.css")
+    link(rel="stylesheet", href="/animate.css/animate.min.css")
+    link(href="https://fonts.googleapis.com/css?family=Slabo+27px", rel="stylesheet")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Learning WebSockets with Socket.io
+  body
+    div#wrapper
+      div#overlay
+        include ./includes/suit.jade
+        div#share
+        div#promo(class="hide")
+          p use promo code <span>TEDAW16</span> next time you shop
+          div#join
+            p for more ways to save, join our savings mailing list!
+            input(type="text", placeholder="email address")
+            button.
+              Join
+        div#resume(class="hide")
+          p Continue Video
+  script(src="https://code.jquery.com/jquery-3.1.0.min.js", integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous" )
+  script(src="/Swiper/dist/js/swiper.jquery.min.js")
+  script(src='/socket.io/socket.io.js')
+  script.
+    var socket = io.connect('http://localhost:3000')
+
+    socket.on('connect', function() {
+      var id = socket.id
+      console.log('connected!', id)
+    })
+
+    socket.on('suit-overlay', function(data) {
+      console.log('open overlay on device', data)
+      $("#suit").removeClass("hide")
+      $("#resume").removeClass("hide")
+      $("#suit").addClass("animated bounceInUp")
+
+      var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationType: 'progress',
+        spaceBetween: 30,
+        loop: true
+      });
+    })
+
+    socket.on('promo-overlay', function(data) {
+      console.log('open overlay on device', data)
+      $("#promo").removeClass("hide")
+      $("#resume").removeClass("hide")
+      $("#promo").addClass("animated bounceInUp")
+      })
+
+    $('#resume').on("click", function() {
+      socket.emit('start')
+      console.log("start");
+      closeOverlays()
+    })
+
+    function closeOverlays() {
+      $("#suit").addClass("hide")
+      $("#resume").addClass("hide")
+      $("#share").addClass("hide")
+      $("#promo").addClass("hide")
+    }
+
+
