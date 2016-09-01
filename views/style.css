@@ -1,9 +1,9 @@
-html { 
-  /*background: url("http://i.giphy.com/Ph0oIVQeuvh0k.gif") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
+body#desktop {
+
+
+  background-color: #00c6ff; /* fallback for old browsers */
+  background-color: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+  background-color: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .flex-container {
@@ -27,6 +27,29 @@ html {
   align-self: stretch;
   flex: 1;
   width: 100%;
+}
+
+#roomnumber {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 150px;
+  color: white;
+}
+
+#roomnumber p {
+  font-size: 2em;
+  margin: 0 120px;
+  padding-bottom: 40px;
+  line-height: 1.5em;
+}
+
+#roomnumber p span {
+  border-bottom: 4px solid white;
+}
+
+p#code {
+  font-weight: bolder;
+  font-size: 7em;
 }
 
 #suit {

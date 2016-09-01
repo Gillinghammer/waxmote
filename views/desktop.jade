@@ -8,10 +8,12 @@ html
     link(href='https://fonts.googleapis.com/css?family=Slabo+27px', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Learning WebSockets with Socket.io
-  body
+  body#desktop
+    div#roomnumber
+      p Head to <span>waxmote.herokuapp.com</span> on your phone!
+      p#code 
     #wrapper.flex-container
       #video-container.flex-item
-        h1#roomnumber
         div#vid.hide.animated.fadeInUp(style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;")
           iframe#video(style="position: absolute; top: 0; left: 0;", width="100%", height="100%" src="//embed.wirewax.com/8039347/?fullBleed=true", frameborder="0", scrolling="yes", allowfullscreen)
     script(src='https://code.jquery.com/jquery-3.1.0.min.js', integrity='sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=', crossorigin='anonymous')
@@ -24,7 +26,7 @@ html
       var room = 0;
       socket.on("assign room", function(roomNumber) {
         room = roomNumber;
-        $("#roomnumber").html("enter on your phone " + room)
+        $("#code").html(room)
         console.log("your room number: ", room)
       });
 
