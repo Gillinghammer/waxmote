@@ -23,11 +23,26 @@ app.get('/mobile', function (req, res) {
 
 var count = 0
 var messages = [];
-var clients = {};
+var rooms = [];
 io.on('connection', function (socket) {
   count++
-  io.emit("news", { msg: 'Someone arrived', count: count, id: socket.id })
-  clients[socket.id] = socket.id
+
+  socket.on('create room', function () {
+    room = count
+    rooms.push(room)
+    socket.join(room);
+    console.log('joined room # ', room)
+  });
+
+  socket.on('find desktop', function(room) {
+    socket.join(room)
+    console.log("joined same room as desktop")
+  });
+
+  socket.on("ping-server", function(room) {
+    io.sockets.in(room).emit("message", "hello");
+    console.log("pinging desktop at room number: ", room)
+  })
 
   socket.on('start', function() {
     io.emit('play')
@@ -61,11 +76,6 @@ io.on('connection', function (socket) {
             io.emit('share-overlay', data)
     }
   });
-
-  socket.on("createRoom", function(roomName) {
-    var hq = io.of('/hq')
-    console.log(hq)
-  })
 
   socket.on('disconnect', function() {
     console.log("user " + count + " has disconnected")

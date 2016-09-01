@@ -10,6 +10,9 @@ html
     title Learning WebSockets with Socket.io
   body
     #wrapper.flex-container
+      button#pressme Press
+      input#roomnumber(type="text")
+      button#ping PING
       #overlay.flex-item
         #suit.hide
           .swiper-container
@@ -43,6 +46,18 @@ html
   script.
     var socket = io()
     
+    $("#pressme").on("click", function() {
+      socket.emit("find desktop", "lolcats");
+      console.log('attempting to join desktop')
+    })
+
+    $("#ping").on("click", function() {
+
+      var connectTo = parseInt($("#roomnumber").val())
+      socket.emit("ping-server", connectTo);
+      console.log('pinging desktop', connectTo)
+    })
+
     socket.on('connect', function() {
       var id = socket.id
       console.log('connected!', id)
