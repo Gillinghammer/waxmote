@@ -14,11 +14,14 @@ app.use(express.static('app/assets/components/'));
 var port = process.env.PORT || 3000;
 
 app.get('/', function (req, res) {
-  res.render('desktop')
-})
 
-app.get('/mobile', function (req, res) {
-  res.render('mobile')
+  var ua = req.headers['user-agent']
+      
+  if (/mobile/i.test(ua)) {
+    res.render('mobile')
+  } else {
+    res.render('desktop')
+  }
 })
 
 var count = 0
