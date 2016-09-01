@@ -26,9 +26,11 @@ var messages = [];
 var rooms = [];
 io.on('connection', function (socket) {
   count++
+  var random = Math.floor(Math.random()*900) + 100;
 
+  socket.emit("assign room", random)
   socket.on('create room', function () {
-    room = count
+    room = random
     rooms.push(room)
     socket.join(room);
     console.log('joined room # ', room)
@@ -39,13 +41,14 @@ io.on('connection', function (socket) {
     console.log("joined same room as desktop")
   });
 
-  socket.on("ping-server", function(room) {
-    io.sockets.in(room).emit("message", "hello");
-    console.log("pinging desktop at room number: ", room)
+  socket.on("mobile-sync", function(room) {
+    socket.join(room)
+    io.sockets.in(room).emit("desktop-sync");
+    console.log("syncing to room number: ", room)
   })
 
-  socket.on('start', function() {
-    io.emit('play')
+  socket.on('start', function(syncid) {
+    io.sockets.in(syncid).emit("play");
   })
 
   socket.on('pause', function() {
@@ -60,20 +63,21 @@ io.on('connection', function (socket) {
     io.emit('seekBackward')
   })
 
-  socket.on('tag-clicked', function(data) {
-    console.log(data.customNameRef)
-    switch(data.customNameRef) {
+  socket.on('tag-clicked', function(dataArray) {
+    console.log("d: ", dataArray[0])
+    console.log(dataArray[1].customNameRef)
+    switch(dataArray[1].customNameRef) {
         case "suit":
-            io.emit('suit-overlay', data)
+            io.sockets.in(dataArray[0]).emit('suit-overlay', dataArray[0])
             break;
         case "promo":
-            io.emit('promo-overlay', data)
+            io.sockets.in(dataArray[0]).emit('promo-overlay', dataArray[0])
             break;
         case "share":
-            io.emit('share-overlay', data)
+            io.sockets.in(dataArray[0]).emit('share-overlay', dataArray[0])
             break;
         default:
-            io.emit('share-overlay', data)
+            io.sockets.in(dataArray[0]).emit('share-overlay', dataArray[0])
     }
   });
 

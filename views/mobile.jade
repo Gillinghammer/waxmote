@@ -10,9 +10,8 @@ html
     title Learning WebSockets with Socket.io
   body
     #wrapper.flex-container
-      button#pressme Press
       input#roomnumber(type="text")
-      button#ping PING
+      button#sync Sync with Browser
       #overlay.flex-item
         #suit.hide
           .swiper-container
@@ -45,17 +44,17 @@ html
   script(src='/socket.io/socket.io.js')
   script.
     var socket = io()
-    
+    var syncid = 0;
     $("#pressme").on("click", function() {
       socket.emit("find desktop", "lolcats");
       console.log('attempting to join desktop')
     })
 
-    $("#ping").on("click", function() {
-
+    $("#sync").on("click", function() {
       var connectTo = parseInt($("#roomnumber").val())
-      socket.emit("ping-server", connectTo);
-      console.log('pinging desktop', connectTo)
+      syncid = connectTo
+      socket.emit("mobile-sync", connectTo);
+      console.log('sync... to... ', connectTo)
     })
 
     socket.on('connect', function() {
@@ -95,7 +94,7 @@ html
     })
     
     $('#resume').on("click", function() {
-      socket.emit('start')
+      socket.emit('start', syncid)
       console.log("start");
       closeOverlays()
     })
