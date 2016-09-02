@@ -8,10 +8,12 @@ html
     link(href='https://fonts.googleapis.com/css?family=Slabo+27px', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Learning WebSockets with Socket.io
-  body
+  body#mobile
+    #splash
+      #waiting.hide
     #wrapper.flex-container
-      input#roomnumber(type="text")
-      button#sync Sync with Browser
+        input#roomnumber(type="number", placeholder="000")
+        button#sync Sync
       #overlay.flex-item
         #suit.hide
           .swiper-container
@@ -55,6 +57,9 @@ html
       syncid = connectTo
       socket.emit("mobile-sync", connectTo);
       console.log('sync... to... ', connectTo)
+      $("#roomnumber").addClass("hide");
+      $("#sync").addClass("hide");
+      $("#waiting").removeClass("hide");
     })
 
     socket.on('connect', function() {
@@ -97,6 +102,7 @@ html
       socket.emit('start', syncid)
       console.log("start");
       closeOverlays()
+      $("#waiting").removeClass("hide");
     })
 
     function closeOverlays() {
