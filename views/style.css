@@ -42,6 +42,7 @@ body#desktop {
 }
 
 #roomnumber p span {
+  margin: 0 auto;
   padding-bottom: 3px;
   border-bottom: 3px solid white;
 }
@@ -66,6 +67,12 @@ p#code {
     min-width: 100%;
     min-height: 100%;
   background: url("http://i.giphy.com/3oz8xOvhnSpVOs9xza.gif") no-repeat center center fixed;
+}
+
+#waiting p {
+  text-align: center;
+  padding-top: 35px;
+  font-size: 1.5em;
 }
 
 input#roomnumber {
